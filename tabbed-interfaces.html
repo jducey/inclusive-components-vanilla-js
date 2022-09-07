@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabbed Interface - Inclusive Components</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/css/tabbed-interface.css" />
+    <script src="/js/tabbed-interface.js" defer></script>
+  </head>
+  <body>
+    <main id="main" class="container" tabindex="-1">
+      <section aria-labelledby="tabbed-title">
+        <h1 id="tabbed-title">Tabbed Interfaces</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <a href="#">Atque</a>
+          incidunt quibusdam maiores! Eum quaerat fuga laudantium excepturi
+          dolorum quod voluptatum?
+        </p>
+        <ul role="tablist">
+          <li role="presentation">
+            <a role="tab" href="#section1" id="tab1" aria-selected="true"
+              >Section 1</a
+            >
+          </li>
+          <li role="presentation">
+            <a role="tab" href="#section2" id="tab2" tabindex="-1">Section 2</a>
+          </li>
+          <li role="presentation">
+            <a role="tab" href="#section3" id="tab3" tabindex="-1">Section 3</a>
+          </li>
+        </ul>
+        <section role="tabpanel" id="section1" aria-labelledby="tab1">
+          Lorem ipsum dolor sit amet.
+        </section>
+        <section role="tabpanel" id="section2" aria-labelledby="tab2" hidden>
+          Dolor sit amet <a href="#">consectetur</a>.
+        </section>
+        <section role="tabpanel" id="section3" aria-labelledby="tab3" hidden>
+          Amet consectetur adipisicing elit.
+        </section>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          <a href="#">Atque</a>
+          incidunt quibusdam maiores! Eum quaerat fuga laudantium excepturi
+          dolorum quod voluptatum?
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

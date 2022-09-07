@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toggle Buttons - Inclusive Components</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/css/toggle-buttons.css" />
+    <script src="/js/toggle-buttons.js" defer></script>
+  </head>
+  <body>
+    <main id="main" tabindex="-1" class="container">
+      <h1>Toggle Buttons</h1>
+      <section aria-labelledby="checkbox-label">
+         <h2 id="checkbox-label">Checkbox</h2>
+        <p>
+          In the following example, a checkbox serves as the toggle for an email
+          notifications setting.
+        </p>
+        <input type="checkbox" id="notify" name="notify" value="on" />
+        <label for="notify">Notify by email</label>
+      </section>
+      <section aria-labelledby="radio-label">
+        <h2 id="radio-label">Radio button</h2>
+        <p>
+          Should research show that users benefit from a more explicit on/off
+          metaphor, a radio button group can be employeed.
+        </p>
+        <fieldset>
+          <legend>Notify by email</legend>
+          <input
+            type="radio"
+            id="notify-on"
+            name="notify"
+            value="on"
+            checked="checked"
+          />
+          <label for="notify-on">on</label>
+          <input type="radio" id="notify-off" name="notify" value="off" />
+          <label for="notify-off">off</label>
+        </fieldset>
+      </section>
+      <section aria-labelledby="button-label">
+        <h2 id="button-label">A true toggle button</h2>
+        <p>
+          Sometimes we use button elements to submit forms. To be fully compliant
+          and reliable these buttons should take the
+          <b>type value of submit</b>.
+        </p>
+        <button type="submit">Send</button>
+        <p>
+          But these are only one variety of button, covering one use case. In
+          truth, button elements can be used for all sorts of things, and not
+          just in association with forms. We remind ourselve of this by giving
+          them the <b>type value of button</b>.
+        </p>
+        <button type="button">Send</button>
+        <p>
+          So how do we make a button a toggle button? It's a case of using
+          <b>WAI-ARIA</b> as a progressive enhancement. WAI-ARIA offers states that
+          are not available in basic HTML, such as the <i>pressed</i> state.
+        </p>
+        <button type="button" aria-pressed="false" class="show-check">Notify by email <span aria-hidden="true">&#x2717;</span></button>
+          You don't have to use <code>event.preventDefault()</code> on <code>type="button"</code>
+          controls to suppress form submission.
+        </p>
+      </section>
+      <section aria-labelledby="changing-label">
+        <h2 id="changing-label">Changing Labels</h2>
+        <p>Paused state</p>
+        <button type="button" aria-pressed="false"><span aria-hidden="true">&#x25b6;</span><span class="visually-hidden">play</span></button>
+        <p>Playing state</p>
+        <button type="button" aria-pressed="true"><span aria-hidden="true">&#x23f8;</span><span class="visually-hidden">play</span></button>
+        <p>Coded to update on click</p>
+        <button type="button" aria-pressed="false" class="play-pause"><span aria-hidden="true">&#x25b6;</span><span class="visually-hidden">play</span></button>
+      </section>
+      <section aria-labelledby="auxiliary-label">
+        <h2 id="auxiliary-label">Auxiliary Labeling</h2>
+        <p>In some circumstances, we may wnt to provide on/off switches that actually read "on/off". The trick is making sure there is a clear association between each toggle switch and a respective, auxiliary label.</p>
+        <h3>Notifications</h3>
+        <ul class="switch-toggles">
+          <li>
+            <span id="notify-email">Notify by email</span>
+            <button role="switch" aria-checked="true" aria-labelledby="notify-email"><span>on</span><span>off</span></button>
+          </li>
+          <li>
+            <span id="notify-sms">Notify by SMS</span>
+            <button role="switch" aria-checked="true" aria-labelledby="notify-sms"><span>on</span><span>off</span></button>
+          </li>
+        </ul>
+        <p>Note: This implementation is working the best during Voice Over tests.</p>
+      </section>
+    </main>
+  </body>
+</html>

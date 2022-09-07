@@ -1,0 +1,85 @@
+:root {
+  --tag-color: orange;
+  --on-off-switch-on-color: green;
+  --on-off-switch-off-color: red;
+  --on-off-switch-accent: rgb(255, 255, 255);
+  --on-off-switch-spacing-vertical: 0.3rem;
+  --on-off-switch-spacing-horizontal: 0.5rem;
+  --on-off-inner-switch-spacing-vertical: 0.2rem;
+  --on-off-inner-switch-spacing-horizontal: 0.5rem;
+}
+
+button {
+  width: auto;
+}
+
+button:focus {
+  box-shadow: 0 0 0 0.25rem skyBlue, inset 0 0 0 015rem #000,
+    inset 0.25em 0.25em 0 #fff;
+}
+
+[aria-pressed] {
+  position: relative;
+  box-shadow: 0.125em 0.125em 0 rgb(202, 201, 201), 0.25em 0.25em #000;
+  transition: box-shadow 0.5s ease-in;
+}
+
+[aria-pressed='true'] {
+  box-shadow: none;
+}
+
+.play-pause {
+  border-radius: 50%;
+}
+
+.play-pause span {
+  pointer-events: none;
+}
+
+ul.switch-toggles li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--on-off-switch-accent);
+}
+
+ul.switch-toggles button {
+  padding: var(--on-off-switch-spacing-vertical)
+    var(--on-off-switch-spacing-horizontal);
+  border: 3px solid var(--on-off-switch-accent);
+  background-color: transparent;
+}
+
+ul.switch-toggles span {
+  border-radius: 5px;
+  margin: 0 0.25rem;
+  padding: var(--on-off-inner-switch-spacing-vertical)
+    var(--on-off-inner-switch-spacing-horizontal);
+  color: var(--on-off-switch-accent);
+}
+
+[role='switch'][aria-checked='true'] :first-child {
+  background-color: var(--on-off-switch-on-color);
+  color: white;
+}
+
+[role='switch'][aria-checked='false'] :last-child {
+  background-color: var(--on-off-switch-off-color);
+  color: white;
+}
+
+code {
+  color: var(--tag-color);
+  background: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  bottom: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}

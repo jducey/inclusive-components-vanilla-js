@@ -1,0 +1,51 @@
+.style h3 button {
+  all: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary);
+  padding: 0.5em;
+}
+
+.style h3 button:hover,
+.style h3 button:focus {
+  background-color: var(--primary-focus);
+}
+
+.style h3 button svg {
+  height: 1em;
+  margin-left: 0.5em;
+  outline: 2px solid transparent;
+}
+
+.style h3 button:focus svg {
+  outline: 2px solid;
+}
+
+.style[aria-expanded="true"] .vert {
+  display: none;
+}
+
+.style [aria-expanded] rect {
+  fill: currentColor;
+}
+
+.style .hidden {
+  display: none;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.controls button {
+  width: auto;
+}
+
+ul li {
+  list-style: none;
+}

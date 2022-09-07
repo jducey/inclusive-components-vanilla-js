@@ -1,0 +1,79 @@
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --primary: hsl(195, 86%, 35%);
+    --form-element-placeholder-color: var(--color);
+  }
+}
+
+[data-theme='light'] li > button {
+  --color: rgb(65, 84, 98);
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  bottom: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+[aria-pressed] {
+  width: auto;
+}
+
+body > header,
+body > main {
+  --block-spacing-vertical: calc(var(--spacing) * 1.5);
+}
+
+/* Needs browser proprietary selectors */
+::placeholder {
+  font-style: italic;
+}
+
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.empty-state,
+.empty-state-v {
+  border: 2px solid var(--color);
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.empty-state,
+ul:empty {
+  display: none;
+}
+
+ul:empty + .empty-state {
+  display: block;
+}
+
+ul li {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+:checked + label {
+  text-decoration: line-through;
+}
+
+li button {
+  width: auto;
+  display: inline;
+  background-color: transparent;
+  border-color: transparent;
+  margin-bottom: 0;
+  padding: 0.25rem;
+}
+
+/* Do not apply focus styles to elements that are focused programmatically */
+[tabindex='1'] {
+  outline: none;
+}

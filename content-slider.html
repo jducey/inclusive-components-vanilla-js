@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Content Slider - Inclusive Components</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/css/content-slider.css" />
+    <script src="/js/content-slider.js" defer></script>
+  </head>
+  <body>
+    <main id="main" class="container" tabindex="-1">
+      <section aria-labelledby="slider-title">
+        <h1 id="slider-title">A Content Slider</h1>
+        <h2>Control</h2>
+        <p>In the broadest terms, any inclusive component should be:</p>
+        <ul>
+          <li>Clear and easy to use</li>
+          <li>Interoperable with different inputs and outputs</li>
+          <li>Responsive and device-agnostic</li>
+          <li>Performant</li>
+          <li><b>Under the user's control</b></li>
+        </ul>
+        <h2>Multimodal interaction</h2>
+        <p>
+          Multimodal means "can be operated in different ways." Browsers are
+          naturally multimodal. Make sure your content cand be operated by
+          mouse, keyboard and touch.
+        </p>
+      </section>
+      <section aria-labelledby="basic-slider">
+        <h3 id="basic-slider">Basic slider without JavaScript</h3>
+        <p>
+          Some browsers hide the scrollbar until the content is focused on by
+          the user. In order to create the needed affordance that an always
+          visible scrollbar will achieve
+          <a
+            href="https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/"
+            >specific styles with cross-browser support</a
+          >
+          are added.
+        </p>
+        <p>
+          To make our slider element focusable by the user, we need to add
+          tabindex="0". Since the (foused) element will now be announced in
+          screen readers, we ought to give it a role and label, identifying it.
+        </p>
+        <article>
+          <div
+            class="styled-scrollbars"
+            role="region"
+            aria-label="gallery"
+            tabindex="0"
+          >
+            <ul>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section aria-labelledby="basic-slider-instructions">
+        <h3 id="basic-slider-instructions">A basic slider with instructions</h3>
+        <p>
+          To support multimodal interaction the instructions will appear on
+          hover, focus and touch. Touch is dependent on a small amount of
+          JavaScript.
+        </p>
+        <article>
+          <div
+            class="styled-scrollbars"
+            role="region"
+            aria-label="gallery"
+            aria-describedby="basicInstructions"
+            tabindex="0"
+          >
+            <ul>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://loremflickr.com/640/360"
+                  alt="random image from lorem flickr"
+                />
+              </li>
+            </ul>
+          </div>
+          <div class="instructions" id="basicInstructions">
+            <p id="hover">
+              <span aria-hidden="true">←</span>scroll for more
+              <span aria-hidden="true">→</span>
+            </p>
+          </div>
+        </article>
+      </section>
+      <section aria-labelledby="lazy-load">
+        <h3 id="lazy-load">
+          Full width slides with captioned artwork, Intersection Observer and
+          buttons
+        </h3>
+        <p>
+          Use figure and figcaption from here on out to add captions. Also, make
+          each slide take up 100% of the ul container with flex-basis. Lazy load
+          images with Intersection Observer.
+        </p>
+        <p><b>To do:</b> <i>enable buttons</i>.</p>
+        <article>
+          <div
+            class="styled-scrollbars gallery-container no-js"
+            role="region"
+            aria-describedby="captionFlex"
+            tabindex="0"
+          >
+            <ul
+              class="gallery-controls visually-hidden"
+              aria-label="gallery controls"
+            >
+              <li>
+                <button
+                  class="previous"
+                  id="previous"
+                  aria-label="previous artwork"
+                >
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                    <path d="M18,2 2,10 18,18"></path>
+                  </svg>
+                </button>
+              </li>
+              <li>
+                <button class="next" id="next" aria-label="next artwork">
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20">
+                    <path d="M2,2 18,10 2,18"></path>
+                  </svg>
+                </button>
+              </li>
+            </ul>
+            <div
+              role="group"
+              class="gallery"
+              aria-label="gallery (scroll for more)"
+              tabindex="0"
+            >
+              <ul>
+                <li>
+                  <figure>
+                    <img
+                      class="dots"
+                      data-src="./images/Quotefancy-1.jpg"
+                      src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 2" stroke="currentColor" stroke-dasharray="1,0.5"><path d="M1,1 5,1" /></svg>'
+                      alt="Work is a rubber ball. If you drop it, it will bounce back. The other four balls - family, health, friends, integrity - are made of glass. If you drop one of these, it will be irrevocably scuffed, nicked, perhaps even shattered."
+                    />
+                    <noscript
+                      ><img
+                        data-src="./images/Quotefancy-1.jpg"
+                        alt="Work is a rubber ball. If you drop it, it will bounce back. The other four balls - family, health, friends, integrity - are made of glass. If you drop one of these, it will be irrevocably scuffed, nicked, perhaps even shattered."
+                    /></noscript>
+                    <figcaption>Title of artwork</figcaption>
+                  </figure>
+                </li>
+                <li>
+                  <figure>
+                    <img
+                      class="dots"
+                      data-src="./images/Quotefancy-2.jpg"
+                      src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 2" stroke="currentColor" stroke-dasharray="1,0.5"><path d="M1,1 5,1" /></svg>'
+                      alt="Extraordinary results are directly determined by how narrowly you can make your focus"
+                    />
+                    <noscript
+                      ><img
+                        data-src="./images/Quotefancy-2.jpg"
+                        alt="Extraordinary results are directly determined by how narrowly you can make your focus"
+                    /></noscript>
+                    <figcaption>Title of artwork</figcaption>
+                  </figure>
+                </li>
+                <li>
+                  <figure>
+                    <img
+                      class="dots"
+                      data-src="./images/Quotefancy-3.jpg"
+                      src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 2" stroke="currentColor" stroke-dasharray="1,0.5"><path d="M1,1 5,1" /></svg>'
+                      alt="Until my ONE thing is done, everything else is a distraction."
+                    />
+                    <noscript
+                      ><img
+                        data-src="./images/Quotefancy-3.jpg"
+                        alt="Until my ONE thing is done, everything else is a distraction."
+                    /></noscript>
+                    <figcaption>Title of artwork</figcaption>
+                  </figure>
+                </li>
+                <li>
+                  <figure>
+                    <img
+                      class="dots"
+                      data-src="./images/Quotefancy-4.jpg"
+                      src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 2" stroke="currentColor" stroke-dasharray="1,0.5"><path d="M1,1 5,1" /></svg>'
+                      alt="What's the ONE Thing you can do such that by doing it everything else will be easier or unnecessary?"
+                    />
+                    <noscript
+                      ><img
+                        data-src="./images/Quotefancy-4.jpg"
+                        alt="What's the ONE Thing you can do such that by doing it everything else will be easier or unnecessary?"
+                    /></noscript>
+                    <figcaption>Title of artwork</figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="instructions" id="captionFlex">
+            <p id="hover">
+              <span aria-hidden="true">←</span>scroll for more
+              <span aria-hidden="true">→</span>
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

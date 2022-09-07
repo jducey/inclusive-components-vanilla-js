@@ -1,0 +1,164 @@
+/* basic slider without js */
+[aria-label="gallery"] {
+  overflow-x: scroll;
+  scrollbar-color: #999 #333;
+}
+
+[aria-label="gallery"] ul {
+  display: flex;
+}
+
+[aria-label="gallery"] li {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 1rem;
+}
+
+[aria-label="gallery"] img {
+  min-height: 40vh;
+  max-width: none;
+}
+
+[aria-label="gallery"]::-webkit-scrollbar {
+  width: 10px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+}
+[aria-label="gallery"]::-webkit-scrollbar-thumb {
+  /* Foreground */
+  background: #999;
+}
+[aria-label="gallery"]::-webkit-scrollbar-track {
+  /* Background */
+  background: #333;
+}
+
+/* basic slider with instructions */
+.instructions {
+  display: none;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+[aria-label="gallery"]:hover + .instructions,
+[aria-label="gallery"]:focus + .instructions,
+.touch #instructions {
+  display: block;
+}
+
+/* With captions and flex basis full width images */
+.gallery-container li {
+  display: flex;
+  flex: 0 0 100%;
+}
+
+.gallery-container figure {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  height: 50vh;
+}
+
+.gallery-container figcaption {
+  height: 2rem;
+  line-height: 2rem;
+}
+
+.gallery-container img {
+  display: block;
+  margin: 2rem auto 0;
+  max-width: 100%;
+  max-height: calc(100% - 2rem);
+}
+
+/* Intersection Observer */
+.alert {
+  border: 1px solid red;
+}
+
+.warning {
+  border: 1px solid orange;
+}
+
+.success {
+  border: 1px solid green;
+}
+
+@keyframes flash {
+  to {
+    opacity: 0;
+  }
+}
+
+img.dots {
+  max-width: 5rem;
+  max-height: 5rem;
+  padding: 0;
+  animation: flash 0.5s linear infinite;
+}
+
+.no-js .dots {
+  display: none;
+}
+
+/* control buttons */
+.gallery {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -webkit-scroll-snap-type: mandatory;
+  -ms-scroll-snap-type: mandatory;
+  scroll-snap-type: mandatory;
+  -webkit-scroll-snap-points-x: repeat(100%);
+  -ms-scroll-snap-points-x: repeat(100%);
+  scroll-snap-points-x: repeat(100%);
+}
+
+.gallery ul {
+  display: flex;
+}
+
+[aria-label="gallery"] ul.visually-hidden {
+  display: none;
+}
+
+.gallery-container {
+  position: relative;
+  padding: 0 3rem;
+}
+
+[aria-label="gallery"] .gallery-controls {
+  display: block;
+}
+
+.gallery-controls li {
+  display: inline;
+}
+
+.gallery-controls button {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 3rem;
+  border: 0;
+  padding: 0.5rem;
+  background: #000;
+}
+
+.previous {
+  left: 0;
+}
+
+.next {
+  left: calc(100% - 3rem);
+}
+
+.gallery-controls svg {
+  width: 100%;
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}

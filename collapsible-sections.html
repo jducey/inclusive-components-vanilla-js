@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collapsible Sections - Inclusive Components</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/css/collapsible-sections.css" />
+    <script src="/js/collapsible-sections.js" defer></script>
+  </head>
+  <body>
+    <main id="main" class="container" tabindex="-1">
+      <section aria-labelledby="collapsible-title">
+        <h1 id="collapsible-title">Collapsible Sections</h1>
+        <h2>Basic structural foundation</h2>
+        <p>Start out with a heading and paragraphs.</p>
+        <article>
+          <h3>My section</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Exercitationem porro doloremque ducimus fugit accusamus pariatur
+            iure nemo animi enim cumque!
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Exercitationem porro doloremque ducimus fugit accusamus pariatur
+            iure nemo animi enim cumque!
+          </p>
+        </article>
+        <h2>The adapted markup</h2>
+        <p>
+          Nest a button in a heading to wire the interaction for assisitive
+          technology users. Wrap the content in a div.
+        </p>
+        <p><strong>Note:</strong> Do not put role="button" on a heading.</p>
+        <article>
+          <h3><button>My Section</button></h3>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reprehenderit excepturi sunt veniam fuga molestias provident
+              reiciendis dolorum aliquid, cum quo.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Reprehenderit excepturi sunt veniam fuga molestias provident
+              reiciendis dolorum aliquid, cum quo.
+            </p>
+          </div>
+        </article>
+        <h2>State and Style</h2>
+        <p>
+          Communicate two states, collapsed or expanded to a non-visual user
+          with aria-expanded on the button. The button is the best place for the
+          attribute since it is the control and is findable.
+        </p>
+        <p>
+          The content div can be collapsed with the hidden attribute.
+          Alternatively, use a class with display none which can be toggled.
+        </p>
+        <p>
+          <strong>Note:</strong> We don't need role="button" because the element
+          itself implies that role. Also, aria-controls may only work in JAWS
+          and the content directly following the heading should be sufficient.
+        </p>
+        <p>
+          Style the button so it inherits all from the heading. Then add + and -
+          svgs to indicated the interaction.
+        </p>
+        <article class="style">
+          <h3>
+            <button aria-expanded="false">
+              My section
+              <svg viewBox="0 0 10 10" focusable="false">
+                <rect class="vert" height="8" width="2" y="1" x="4" />
+                <rect height="2" width="8" y="4" x="1" />
+              </svg>
+            </button>
+          </h3>
+          <div class="hidden">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos aspernatur odit animi fuga iste nobis dolores sapiente
+              libero quidem incidunt?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos aspernatur odit animi fuga iste nobis dolores sapiente
+              libero quidem incidunt?
+            </p>
+          </div>
+          <h3>
+            <button aria-expanded="false">
+              My section
+              <svg viewBox="0 0 10 10" focusable="false">
+                <rect class="vert" height="8" width="2" y="1" x="4" />
+                <rect height="2" width="8" y="4" x="1" />
+              </svg>
+            </button>
+          </h3>
+          <div class="hidden">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos aspernatur odit animi fuga iste nobis dolores sapiente
+              libero quidem incidunt?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos aspernatur odit animi fuga iste nobis dolores sapiente
+              libero quidem incidunt?
+            </p>
+          </div>
+        </article>
+        <p>
+          Tying state and its visual representation together is
+          <i>a very good thing</i>. It ensures that state changes are
+          communicated interoperably.
+        </p>
+        <h2>Expand/Collapse All</h2>
+        Users who have opened multiple sections independently can reset to an
+        initial, compact state for a better overvew of the content. By the same
+        token, users who find fiddlling with interactive elements distracting or
+        tiresome can revert to scrolling through open sections.
+        <article class="style expand-collapse">
+          <ul class="controls">
+            <li><button id="expand">expand all</button></li>
+            <li><button id="collapse">collapse all</button></li>
+          </ul>
+          <div role="region">
+            <h3 id="section1">
+              <button aria-expanded="false">
+                My section
+                <svg viewBox="0 0 10 10" focusable="false">
+                  <rect class="vert" height="8" width="2" y="1" x="4" />
+                  <rect height="2" width="8" y="4" x="1" />
+                </svg>
+              </button>
+            </h3>
+            <div class="hidden">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos aspernatur odit animi fuga iste nobis dolores
+                sapiente libero quidem incidunt?
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos aspernatur odit animi fuga iste nobis dolores
+                sapiente libero quidem incidunt?
+              </p>
+            </div>
+          </div>
+          <div role="region">
+            <h3 id="section2">
+              <button aria-expanded="false">
+                My section
+                <svg viewBox="0 0 10 10" focusable="false">
+                  <rect class="vert" height="8" width="2" y="1" x="4" />
+                  <rect height="2" width="8" y="4" x="1" />
+                </svg>
+              </button>
+            </h3>
+            <div class="hidden">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos aspernatur odit animi fuga iste nobis dolores
+                sapiente libero quidem incidunt?
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos aspernatur odit animi fuga iste nobis dolores
+                sapiente libero quidem incidunt?
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

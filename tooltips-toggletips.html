@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tooltips & Toggletips - Inclusive Components</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/css/tooltips-toggletips.css" />
+    <script src="/js/tooltips-toggletips.js" defer></script>
+    <script src="/js/theme-switcher.js" defer></script>
+  </head>
+  <body>
+    <svg style="display: none">
+      <symbol id="bell-icon" viewBox="0 0 16 16">
+        <path
+          d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"
+        />
+      </symbol>
+    </svg>
+    <header role="banner" class="container">
+      <button class="toggleTheme" aria-pressed="false">
+        Dark mode: <span aria-hidden="true">off</span>
+      </button>
+    </header>
+    </header>
+    <main id="main" tabindex="-1" class="container">
+      <h1>Tooltips & Toggletips</h1>
+      <section aria-labelledby="tooltip-primary">
+        <h2 id="tooltip-primary">Tooltip as Primary Label</h2>
+        <p>
+          Associate the tooltip button with the label using aria-labelledby.
+        </p>
+        <article>
+          <button class="notifications" aria-labelledby="notifications-label">
+            <svg width="24" height="24">
+              <use xlink:href="#bell-icon"></use>
+            </svg>
+          </button>
+          <div role="tooltip" id="notifications-label">Notifications</div>
+        </article>
+      </section>
+      <section aria-labelledby="notification-count">
+        <h2 id="notification-count">Including Notification Count</h2>
+        <p>
+          The aria-labelledby attribute can accept multiple space separated ids.
+        </p>
+        <article>
+          <button
+            class="notifications"
+            aria-labelledby="notifications-count notifications-label"
+          >
+            <svg width="24" height="24">
+              <use xlink:href="#bell-icon"></use>
+            </svg>
+            <span id="notifications-count">3</span>
+          </button>
+          <div role="tooltip" id="notifications-label">Notifications</div>
+        </article>
+      </section>
+      <section aria-labelledby="auxiliary-tooltip">
+        <h2 id="auxiliary-tooltip">Tooltip as Auxiliary Description</h2>
+        <p>
+          In considering the supplementary description the notifications label
+          still needs to be apart of the interactive element. Here it is added
+          as a visually hidden span next to the count span.
+        </p>
+        <article>
+          <button class="notifications" aria-describedby="notifications-desc">
+            <svg width="24" height="24">
+              <use xlink:href="#bell-icon"></use>
+            </svg>
+            <span id="notifications-count">3</span>
+            <span class="visually-hidden">Notifications</span>
+          </button>
+          <div role="tooltip" id="notifications-desc">
+            View and manage notifications settings
+          </div>
+        </article>
+      </section>
+      <section aria-labelledby="toggletip-live">
+        <h2 id="toggletip-live">Toggletips with Live Regions</h2>
+        <article>
+          <div class="grid">
+            <span class="tooltip-container">
+              <button
+                type="button"
+                data-toggletip-content="This clarifies whatever needs clarifying"
+              >
+                <span aria-hidden="true">i</span>
+                <span class="visually-hidden">More info</span>
+              </button>
+              <div role="status"></div>
+            </span>
+            <span class="tooltip-container">
+              <button
+                type="button"
+                data-toggletip-content="This is the second info toggletip"
+              >
+                <span aria-hidden="true">i</span>
+                <span class="visually-hidden">More info</span>
+              </button>
+              <div role="status"></div>
+            </span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

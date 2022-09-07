@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menus and Menu Buttons - Inclusive Components</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="/css/menus.css" />
+    <script src="/js/menus.js" defer></script>
+  </head>
+  <body>
+    <main id="main" tabindex="-1" class="container">
+      <h1>Menus and Menu Buttons</h1>
+      <section aria-labelledby="nav-menu-label">
+        <h2 id="nav-menu-label">Navigation menu buttons</h2>
+        <p>
+          Place the menu toggle inside the nav element. This supports screen
+          reader users who use shortcut menus to jump to nav items. When they
+          arrive on the element the trigger will be immediately available.
+        </p>
+        <article>
+          <nav class="toc" id="navigation">
+            <button aria-expanded="false" aria-controls="menu-list">
+              Menu
+            </button>
+            <ul id="menu-list" hidden>
+              <li><a href="/">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </article>
+      </section>
+      <section aria-labelledby="true-menu-label">
+        <h2 id="true-menu-label">True menus</h2>
+        <p>
+          A menu component intended for choosing options in the subject
+          application, which implements all the expected semantics and
+          corresponding behaviors to be considered conventional for such a tool.
+        </p>
+        <article>
+          <button aria-haspopup="true" aria-expanded="false">
+            Difficulty
+            <span aria-hidden="true">&#x25be;</span>
+          </button>
+          <div role="menu" hidden>
+            <button role="menuitemradio" aria-checked="false" tabindex="-1">
+              Easy
+            </button>
+            <button role="menuitemradio" aria-checked="false" tabindex="-1">
+              Medium
+            </button>
+            <button role="menuitemradio" aria-checked="false" tabindex="-1">
+              Hard
+            </button>
+          </div>
+          <div role="alert" id="menuFeedback"></div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

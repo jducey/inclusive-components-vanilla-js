@@ -1,0 +1,43 @@
+:root {
+  --color-light: #fefefe;
+  --color-dark: #111;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-light: #111;
+    --color-dark: #fefefe;
+  }
+}
+
+[data-theme="light"] {
+  --color-light: #fefefe;
+  --color-dark: #111;
+}
+
+[data-theme="dark"] {
+  --color-light: #111;
+  --color-dark: #fefefe;
+}
+
+body,
+section {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+header,
+main {
+  margin: 2rem 5rem;
+}
+
+section {
+  padding: 1rem;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1rem;
+}

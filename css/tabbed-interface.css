@@ -1,0 +1,60 @@
+@media screen and (min-width: 400px) {
+  [role="tablist"] {
+    display: flex;
+    margin-top: 4rem;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-bottom: 1rem;
+  }
+
+  [role="presentation"] {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  [role="tab"] {
+    --color: rgb(187, 198, 206);
+    padding: 1rem;
+    text-decoration: none;
+    border: 2px solid transparent;
+    position: relative;
+    top: 6px;
+  }
+
+  [aria-selected="true"] {
+    --background-color: #11191f;
+    border-color: var(--color) var(--color) var(--background-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-color: transparent;
+    background-color: var(--background-color);
+    border-bottom: 0;
+  }
+
+  [aria-selected="true"]:hover {
+    border-color: rgb(187, 198, 206);
+  }
+
+  [aria-selected="true"]:focus {
+    --background-color: #11191f;
+    border-color: rgb(187, 198, 206);
+  }
+
+  [role="tabpanel"] {
+    border: 2px solid var(--color);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 2rem 1rem;
+  }
+
+  [role="tabpanel"]:focus,
+  [role="tabpanel"]:focus-within,
+  [role="tabpanel"]:focus-visible {
+    border-color: var(--primary-hover);
+  }
+
+  .hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,128 @@
+/* ! How to hook into OS based theme colors and allow for a toggle */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--dark-color);
+    background: var(--dark-bg);
+  }
+
+  body a {
+    color: #809fff;
+  }
+}
+
+button + [role="tooltip"],
+button + [role="status"] {
+  text-align: center;
+}
+
+.visually-hidden {
+  clip-path: inset(100%);
+  clip: rect(1px 1px 1px 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+body > header,
+body > main {
+  --block-spacing-vertical: calc(var(--spacing) * 1.5);
+}
+
+/* Tooltip */
+
+[role="tooltip"] {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+button:hover + [role="tooltip"],
+button:focus + [role="tooltip"] {
+  display: block;
+}
+
+[aria-labelledby],
+[aria-describedby] {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+[data-theme="light"] [aria-labelledby],
+[data-theme="light"] [aria-describedby] {
+  background-color: transparent;
+  border-color: transparent;
+  --color: rgb(65, 84, 98);
+}
+
+[aria-pressed] {
+  width: auto;
+}
+
+/* Toggletip */
+
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-container button {
+  color: black;
+  background-color: #fff;
+  border-radius: 50%;
+  width: auto;
+  line-height: 0.8;
+  font-weight: 900;
+}
+
+.tooltip-container button:focus,
+.tooltip-container button:active {
+  outline: 0.125rem solid transparent;
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.25rem rgb(83, 152, 179);
+}
+
+[role="status"] {
+  color: black;
+  background-color: skyblue;
+  position: absolute;
+  top: 0;
+  left: 50px;
+}
+
+.toggletip-bubble:not(:empty) {
+  padding: 0.25rem 0.5rem;
+}
+
+.toggletip-bubble:not(:empty)::before {
+  content: "\A";
+  border-style: solid;
+  border-width: 10px 15px 10px 0;
+  border-color: transparent skyblue transparent transparent;
+  position: absolute;
+  top: 5px;
+  left: -15px;
+}
+
+/* In case a dev doesn't use the proper element to a toggle tip you can outline the element in red and also use the madeup error property to write info out to the inspector. */
+[data-toggletip-content]:not(button) {
+  outline: red solid 0.05em;
+  error: Toggletip buttons need to be a button element.;
+}
+/* How to pull data attr content with CSS  */
+/* .tooltip-container button::after {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  content: attr(data-toggletip-content);
+} */
+
+.outside {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
