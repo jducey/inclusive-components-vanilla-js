@@ -1,46 +1,52 @@
 /* basic slider without js */
-[aria-label="gallery"] {
+[aria-label='gallery'] {
   overflow-x: scroll;
   scrollbar-color: #999 #333;
 }
 
-[aria-label="gallery"] ul {
+[aria-label='gallery'] ul {
   display: flex;
 }
 
-[aria-label="gallery"] li {
+[aria-label='gallery'] li {
   display: inline-block;
   white-space: nowrap;
   padding-right: 1rem;
 }
 
-[aria-label="gallery"] img {
+[aria-label='gallery'] img {
   min-height: 40vh;
   max-width: none;
 }
 
-[aria-label="gallery"]::-webkit-scrollbar {
+[aria-label='gallery']::-webkit-scrollbar {
   width: 10px; /* Mostly for vertical scrollbars */
   height: 10px; /* Mostly for horizontal scrollbars */
 }
-[aria-label="gallery"]::-webkit-scrollbar-thumb {
+[aria-label='gallery']::-webkit-scrollbar-thumb {
   /* Foreground */
   background: #999;
 }
-[aria-label="gallery"]::-webkit-scrollbar-track {
+[aria-label='gallery']::-webkit-scrollbar-track {
   /* Background */
   background: #333;
 }
 
 /* basic slider with instructions */
 .instructions {
-  display: none;
   text-align: center;
   margin-top: 0.5rem;
+  height: 1.5rem;
 }
 
-[aria-label="gallery"]:hover + .instructions,
-[aria-label="gallery"]:focus + .instructions,
+.instructions p {
+  display: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+[aria-label='gallery']:hover + .instructions p,
+[aria-label='gallery']:focus + .instructions p,
 .touch #instructions {
   display: block;
 }
@@ -107,20 +113,18 @@ img.dots {
 .gallery {
   overflow-x: scroll;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  -webkit-scroll-snap-type: mandatory;
-  -ms-scroll-snap-type: mandatory;
-  scroll-snap-type: mandatory;
-  -webkit-scroll-snap-points-x: repeat(100%);
-  -ms-scroll-snap-points-x: repeat(100%);
-  scroll-snap-points-x: repeat(100%);
+  scroll-snap-type: x mandatory;
 }
 
 .gallery ul {
   display: flex;
 }
 
-[aria-label="gallery"] ul.visually-hidden {
+.gallery li {
+  scroll-snap-align: start;
+}
+
+[aria-label='gallery'] ul.visually-hidden {
   display: none;
 }
 
@@ -129,7 +133,7 @@ img.dots {
   padding: 0 3rem;
 }
 
-[aria-label="gallery"] .gallery-controls {
+[aria-label='gallery'] .gallery-controls {
   display: block;
 }
 

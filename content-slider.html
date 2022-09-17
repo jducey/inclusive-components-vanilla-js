@@ -46,8 +46,15 @@
         </p>
         <p>
           To make our slider element focusable by the user, we need to add
-          tabindex="0". Since the (foused) element will now be announced in
-          screen readers, we ought to give it a role and label, identifying it.
+          tabindex="0". Since the (focused) element will now be announced in
+          screen readers, we ought to give it a <code>role</code> (region) and
+          <code>aria-label</code> (gallery), identifying it.
+        </p>
+        <p>
+          The <code>region</code> role is fairly generic, but is sutiable for
+          sizable areas of content and its presence ensures that
+          <code>aria-label</code> is supported correctly and announced. You
+          can't just go putting <code>aria-label</code> on any inert element.
         </p>
         <article>
           <div
@@ -90,6 +97,13 @@
             </ul>
           </div>
         </article>
+        <p>
+          Author demo of a
+          <a href="https://smashed.by/contentsliderdemo"
+            >basic content slider</a
+          >
+          without JavaScript.
+        </p>
       </section>
       <section aria-labelledby="basic-slider-instructions">
         <h3 id="basic-slider-instructions">A basic slider with instructions</h3>
@@ -146,6 +160,12 @@
             </p>
           </div>
         </article>
+        <p>
+          Author demo of a
+          <a href="https://smashed.by/contentsliderinstructions"
+            >basic content slider with instructions</a
+          >.
+        </p>
       </section>
       <section aria-labelledby="lazy-load">
         <h3 id="lazy-load">
@@ -157,7 +177,7 @@
           each slide take up 100% of the ul container with flex-basis. Lazy load
           images with Intersection Observer.
         </p>
-        <p><b>To do:</b> <i>enable buttons</i>.</p>
+        <p><b>To do:</b> <i>hide button controls at beginning and end</i>.</p>
         <article>
           <div
             class="styled-scrollbars gallery-container no-js"
@@ -165,6 +185,7 @@
             aria-describedby="captionFlex"
             tabindex="0"
           >
+            <!-- Controls should be inserted with JavaScript in case a browser does not support Intersection Observer. Skipping that requirement here. -->
             <ul
               class="gallery-controls visually-hidden"
               aria-label="gallery controls"
@@ -269,6 +290,15 @@
             </p>
           </div>
         </article>
+        <ul>
+          Author demos:
+          <li>
+            <a href="https://smashed.by/contentsliderbuttons"
+              >Content sider with buttons, scroll-behavior: smooth and snap
+              points</a
+            >
+          </li>
+        </ul>
       </section>
     </main>
   </body>
